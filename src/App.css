@@ -1,38 +1,98 @@
+body {
+  background: url("./media/bg.jpg") no-repeat center center;
+  /* background: rgb(12, 126, 207, 0.6); */
+  background-size: cover;
+  overflow: hidden;
+}
 .App {
   text-align: center;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.searchBox {
+  width: 85%;
+  margin: 0 auto;
+}
+.searchBox div {
+  width: 100%;
+  padding: 10px;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+.container {
+  margin-top: 6rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.loading {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  margin: 100px auto;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+.loading div {
+  border: 5px solid rgb(255, 255, 255, 0.6);
+}
+.location {
+  color: #fff;
+  font-size: 32px !important;
+  font-weight: 500 !important;
+  text-align: center;
+  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
 }
 
-.App-link {
-  color: #61dafb;
+.date {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  text-align: center;
+  font-style: italic;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.temp {
+  color: #fff;
+  font-size: 100px !important;
+  font-weight: 900 !important;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 15px 25px;
+  border-radius: 16px;
+  text-shadow: 3px 6px rgba(50, 50, 70, 0.1);
+  box-shadow: 3px 6px rgba(50, 50, 70, 0.1);
+  text-align: center;
+  margin-top: 1rem !important;
+}
+
+.sitiuation {
+  color: rgba(255, 255, 255);
+  font-size: 30px !important;
+  font-weight: 700 !important;
+  text-align: center;
+  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+  margin-top: 1rem !important;
+}
+.moodIcon {
+  margin-top: 6rem !important;
+  font-size: 60px !important;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dissatisfiedIcon {
+  font-size: 65px !important;
+  color: rgba(255, 255, 255, 0.7);
+}
+.message {
+  font-size: 60px !important;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 15px 25px;
+  text-transform: capitalize;
+  text-align: center;
+  /* margin-top: 0.1rem !important; */
 }
