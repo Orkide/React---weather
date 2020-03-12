@@ -1,14 +1,12 @@
 import Grid from "@material-ui/core/Grid";
 import InputBase from "@material-ui/core/InputBase";
 import Typography from "@material-ui/core/Typography";
-import React, { useState } from "react";
-import Spinner from "react-spinner-material";
-import moment from "moment-timezone";
-import "./App.css";
 import MoodIcon from "@material-ui/icons/Mood";
 import SentimentVeryDissatisfiedIcon from "@material-ui/icons/SentimentVeryDissatisfied";
-import day from "./media/day.jpg";
-import night from "./media/night.jpg";
+import moment from "moment-timezone";
+import React, { useState } from "react";
+import Spinner from "react-spinner-material";
+import "./App.css";
 
 const api = {
   key: "bd71f79e3d9693c29385445464c0abdc",
@@ -20,6 +18,12 @@ function App() {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [fullDate, setFullDate] = useState("");
+  const [error, setError] = useState("");
+  const [isDisconnected, setIsDisconnected] = useState(true);
+
+  const handleConnectionChange = () => {
+    const condition = navigator.onLine ? "online" : "offline";
+  };
 
   const search = event => {
     if (event.key === "Enter") {
@@ -34,29 +38,37 @@ function App() {
             window.moment = moment;
             const country = moment.tz.zonesForCountry(result.sys.country);
             const date = moment().tz(country[0]);
-            const FullDate = date.format("dddd, MMMM Do YYYY, h:mm a");
-            console.log(FullDate[FullDate.length - 2]);
+            console.log(date);
+            const FullDate = date.format("dddd, MMMM Do YYYY");
             setFullDate(FullDate);
-            if (FullDate[FullDate.length - 2] === "a") {
-              document.body.style.background = `url('${day}')`;
-              document.body.style.backgroundSize = "cover";
-            } else if (FullDate[FullDate.length - 2] === "p") {
-              document.body.style.background = `url('${night}')`;
-              document.body.style.backgroundSize = "cover";
-            }
           }
           document.title = `Weather of ${result.name}`;
+        })
+        .catch(error => {
+          setError(error.message);
+          setLoading(false);
         });
-      // .catch(
-      //   return ("There is an error");
-      // );
     }
   };
 
   return (
     <>
+      {error ? (
+        <div className="internet-error">
+          <p>{error}</p>
+        </div>
+      ) : null}
+
       {loading ? (
-        <div className="App">
+        <div
+          className={
+            typeof weather.main != "undefined"
+              ? weather.main.temp - 273.15 > 11
+                ? "App warm"
+                : "App"
+              : "App"
+          }
+        >
           <div className="searchBox">
             <InputBase
               placeholder="Search..."
@@ -76,7 +88,15 @@ function App() {
           </div>
         </div>
       ) : (
-        <div className="App">
+        <div
+          className={
+            typeof weather.main != "undefined"
+              ? weather.main.temp - 273.15 > 11
+                ? "App warm"
+                : "App"
+              : "App"
+          }
+        >
           <div className="searchBox">
             <InputBase
               placeholder="Search..."

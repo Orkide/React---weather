@@ -1,13 +1,28 @@
-body {
-  background: url("./media/bg.jpg") no-repeat center center;
-  /* background: rgb(12, 126, 207, 0.6); */
+.App {
+  height: 100vh;
+  text-align: center;
+  background: url("./media/cold.jpg") no-repeat center center;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.75)
+  );
   background-size: cover;
   overflow: hidden;
 }
-.App {
-  text-align: center;
+
+.App.warm {
   height: 100vh;
+  background: url("./media/warm.jpg") no-repeat center center;
+  text-align: center;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.75)
+  );
+  background-size: cover;
+  overflow: hidden;
+ 
 }
+
 
 .searchBox {
   width: 85%;
@@ -95,4 +110,18 @@ body {
   text-transform: capitalize;
   text-align: center;
   /* margin-top: 0.1rem !important; */
+}
+
+.internet-error {
+  height: 60px;
+  background: #ff8100;
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.internet-error p {
+  font-size: 25px;
+  line-height: 60px;
+  color: #fff;
+  margin: 0;
 }
